@@ -51,6 +51,8 @@
     "@heroui/tooltip": "2.2.29",
     "@heroui/use-theme": "2.1.10",
     "@heroui/user": "2.2.26",
+    "@octokit/auth-token": "^6.0.0",
+    "@octokit/rest": "^22.0.1",
     "@react-aria/visually-hidden": "3.8.31",
     "@react-types/shared": "3.33.1",
     "@tailwindcss/postcss": "4.1.11",
