@@ -6,7 +6,6 @@ const octokit = new Octokit();
 
 export async function searchUsers(queryKey = "", pageParam = 1, per_page = 10) {
 
-
   try {
     const response = await octokit.rest.search.users({
       q: queryKey,

@@ -1,7 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { useAppStore } from "@/store/store";
+import UserCard from "./UserCard";
 
+import { useAppStore } from "@/store/store";
 import { searchUsers } from "@/services/gitHubApi";
 
 export default function SearchResultsList() {
@@ -10,7 +11,8 @@ export default function SearchResultsList() {
 
   const { data } = useInfiniteQuery({
     queryKey: ["searchQuery", searchQuery],
-    queryFn: ({ pageParam }) => searchUsers(searchQuery, pageParam, users_per_page),
+    queryFn: ({ pageParam }) =>
+      searchUsers(searchQuery, pageParam, users_per_page),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       if (!lastPage) return undefined;
@@ -23,7 +25,14 @@ export default function SearchResultsList() {
     },
   });
 
-  console.log(data);
-
-  return <div>hello</div>;
+  if (!data) return;
+  if (data.pages[0]?.items) {
+    return (
+      <section className="grid grid-cols-4 gap-4">
+        {data.pages[0].items.map((user) => (
+          <UserCard key={user.id} user={user}/>
+        ))}
+      </section>
+    );
+  }
 }
