@@ -1,4 +1,3 @@
-import { title } from "@/components/primitives";
 import SearchInput from "@/features/userSearch/searchInput";
 import DefaultLayout from "@/layouts/default";
 
