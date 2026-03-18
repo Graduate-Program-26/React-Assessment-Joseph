@@ -2,8 +2,11 @@ import { Input } from "@heroui/input";
 
 import { SearchIcon } from "@/components/icons";
 import { title } from "@/components/primitives";
+import { useAppStore } from "@/store/store";
 
 export default function SearchInput() {
+  const { searchQuery, setSearchQuery } = useAppStore();
+
   return (
     <div className="w-full h-full flex flex-col flex-grow place-content-center place-items-center gap-4">
       <div className={`${title({ color: "violet" })}`}>GitSearch</div>
@@ -21,6 +24,8 @@ export default function SearchInput() {
           labelPlacement="outside"
           placeholder="Search for a github user..."
           type="search"
+          value={searchQuery}
+          onValueChange={(value) => setSearchQuery(value)}
         />
       </div>
     </div>
