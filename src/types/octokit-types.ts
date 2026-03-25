@@ -12,4 +12,4 @@ export type GetEventsResponse = ReturnType<
 
 export type Events = Awaited<GetEventsResponse>["data"];
 
-export type Event = Events[number]
+export type Event = Events[number];

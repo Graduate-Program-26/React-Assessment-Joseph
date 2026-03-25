@@ -1,11 +1,12 @@
-import { GithubUser } from "@/types/octokit-types";
-
 import { useParams } from "react-router-dom";
 import { GitHubCalendar } from "react-github-calendar";
 import { useQuery } from "@tanstack/react-query";
-import { getUser } from "@/services/github/users";
 import { Image, Card, CardBody } from "@heroui/react";
+
 import UserEvents from "../features/activity/UserEvents";
+
+import { getUser } from "@/services/github/users";
+import { GithubUser } from "@/types/octokit-types";
 
 export default function UserDetailsPage() {
   const params = useParams();

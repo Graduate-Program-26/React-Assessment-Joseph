@@ -1,8 +1,10 @@
-import { Events } from "@/types/octokit-types";
-import { getPublicUserEvents } from "@/services/github/events";
 import { useQuery } from "@tanstack/react-query";
 import { Spinner, Accordion, AccordionItem } from "@heroui/react";
+
 import EventItem from "./EventItem";
+
+import { getPublicUserEvents } from "@/services/github/events";
+import { Events } from "@/types/octokit-types";
 
 interface props {
   username: string;

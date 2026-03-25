@@ -2,16 +2,16 @@ import type { GithubUser } from "@/types/octokit-types";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Spinner } from "@heroui/react";
+import { useSearchParams } from "react-router-dom";
 
 import UserCard from "./UserCard";
 
-import { useAppStore } from "@/store/store";
 import { searchUsers } from "@/services/github/users";
-import { useSearchParams } from "react-router-dom";
 
 export default function SearchResultsList() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query")?.toString();
+
   const usersPerPage = 10;
   const { data, error, fetchNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
@@ -44,11 +44,13 @@ export default function SearchResultsList() {
   return (
     <section className="flex  flex-col gap-2">
       <p>Found: {totalCount} users</p>
-      <div className="grid grid-cols-4 gap-4">
+      <ul className="grid grid-cols-4 gap-4">
         {users.map((user: GithubUser) => (
-          <UserCard key={user.id} user={user} />
+          <li key={user.id}>
+            <UserCard user={user} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

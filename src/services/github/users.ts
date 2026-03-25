@@ -17,7 +17,7 @@ export async function searchUsers(query = "", page_param = 1, per_page = 10) {
   }
 }
 
-export async function getUser(username: string){
+export async function getUser(username: string) {
   const url = `/api/github/user/getUser?username=${encodeURIComponent(username)}`;
 
   try {

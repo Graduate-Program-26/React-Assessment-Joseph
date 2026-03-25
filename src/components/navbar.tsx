@@ -11,10 +11,11 @@ import {
 import { link as linkStyles } from "@heroui/theme";
 import clsx from "clsx";
 
+import { title } from "./primitives";
+
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon } from "@/components/icons";
-import { title } from "./primitives";
 
 export const Navbar = () => {
   return (
