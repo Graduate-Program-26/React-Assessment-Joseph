@@ -15,7 +15,7 @@ function eventHeader(event: Event) {
     case "CreateEvent":
       return (
         <span className="line-clamp-1">
-          {`${user} created a ${event.payload.ref_type} in `}
+          {`${user} created a ${(event.payload as { ref_type: string }).ref_type} in `}
           <span className="font-semibold">{repo}</span>
         </span>
       );
