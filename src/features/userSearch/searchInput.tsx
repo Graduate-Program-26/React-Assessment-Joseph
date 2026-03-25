@@ -1,7 +1,8 @@
-import { SearchIcon } from "@/components/icons";
-import { useAppStore } from "@/store/store";
 import { Button, Input } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
+
+import { SearchIcon } from "@/components/icons";
+import { useAppStore } from "@/store/store";
 
 export default function SearchInput() {
   const navigate = useNavigate();
@@ -39,10 +40,10 @@ export default function SearchInput() {
           placeholder="Search for a github user..."
           type="search"
           value={searchQuery}
-          onKeyDown={(event: KeyboardEvent) =>
+          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
             event.key === "Enter" && handleSearch()
           }
-          onValueChange={(value: string) => setSearchQuery(value.trim())}
+          onValueChange={(value: string) => setSearchQuery(value)}
         />
       </div>
     </>

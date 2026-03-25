@@ -1,22 +1,17 @@
 import { Card, CardBody, Image } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 
-import { GithubUser } from "@/lib/octokit";
+import { GithubUser } from "@/types/octokit-types";
 
 interface UserCardProps {
-  key: number | string;
   user: GithubUser;
 }
 export default function UserCard(props: UserCardProps) {
-  const { key, user } = props;
+  const { user } = props;
   const navigate = useNavigate();
 
   return (
-    <Card
-      key={key}
-      isPressable={true}
-      onClick={() => navigate(`/user/${user.login}`)}
-    >
+    <Card isPressable={true} onClick={() => navigate(`/user/${user.login}`)}>
       <CardBody className=" ">
         <Image alt={user.name?.toString()} src={user.avatar_url} />
         <div className="p-2">
