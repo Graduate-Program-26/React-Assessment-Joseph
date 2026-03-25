@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint --fix",
     "preview": "vite preview"
@@ -64,12 +63,11 @@
     "framer-motion": "11.18.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router": "^7.13.1",
-    "react-router-dom": "6.23.0",
-    "root": "tanstack/react-query",
+    "react-github-calendar": "^5.0.5",
+    "react-router-dom": "^6.30.3",
     "tailwind-variants": "3.2.2",
     "tailwindcss": "4.1.11",
-    "tanstack-query": "^1.0.0",
+    "vercel": "^50.35.0",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
@@ -81,6 +79,7 @@
     "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "8.31.1",
+    "@vercel/node": "^5.6.18",
     "@vitejs/plugin-react": "4.7.0",
     "eslint": "9.25.1",
     "eslint-config-prettier": "9.1.0",

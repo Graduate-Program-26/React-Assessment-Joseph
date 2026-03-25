@@ -1,38 +1,54 @@
+import type { GithubUser } from "@/types/octokit-types";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { Spinner } from "@heroui/react";
 
 import UserCard from "./UserCard";
 
 import { useAppStore } from "@/store/store";
-import { searchUsers } from "@/services/gitHubApi";
+import { searchUsers } from "@/services/github/users";
+import { useSearchParams } from "react-router-dom";
 
 export default function SearchResultsList() {
-  const { searchQuery } = useAppStore();
-  const users_per_page = 10;
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query")?.toString();
+  const usersPerPage = 10;
+  const { data, error, fetchNextPage, isLoading, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["searchQuery", query],
+      queryFn: ({ pageParam }) => searchUsers(query, pageParam, usersPerPage),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage, allPages) => {
+        if (!lastPage) return undefined;
+        const maxPages = Math.ceil(lastPage.total_count / usersPerPage);
+        const nextWeight = allPages.length + 1;
 
-  const { data } = useInfiniteQuery({
-    queryKey: ["searchQuery", searchQuery],
-    queryFn: ({ pageParam }) =>
-      searchUsers(searchQuery, pageParam, users_per_page),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      if (!lastPage) return undefined;
-      const maxPages = Math.ceil(lastPage.total_count / 30);
-      const nextWeight = allPages.length + 1;
+        return nextWeight <= maxPages && nextWeight <= 33
+          ? nextWeight
+          : undefined;
+      },
+      enabled: !!query,
+    });
 
-      return nextWeight <= maxPages && nextWeight <= 33
-        ? nextWeight
-        : undefined;
-    },
-  });
-
-  if (!data) return;
-  if (data.pages[0]?.items) {
+  if (isLoading)
     return (
-      <section className="grid grid-cols-4 gap-4">
-        {data.pages[0].items.map((user) => (
-          <UserCard key={user.id} user={user}/>
-        ))}
-      </section>
+      <>
+        <Spinner />
+      </>
     );
-  }
+  if (!data) return;
+
+  const users = data.pages.flatMap((page) => page.items);
+  const totalCount = data.pages[0].total_count;
+
+  return (
+    <section className="flex  flex-col gap-2">
+      <p>Found: {totalCount} users</p>
+      <div className="grid grid-cols-4 gap-4">
+        {users.map((user: GithubUser) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </div>
+    </section>
+  );
 }
