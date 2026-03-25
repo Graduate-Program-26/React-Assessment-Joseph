@@ -5,3 +5,11 @@ export type SearchUsersResponse = ReturnType<
 >;
 
 export type GithubUser = Awaited<SearchUsersResponse>["data"]["items"][number];
+
+export type GetEventsResponse = ReturnType<
+  Octokit["rest"]["activity"]["listPublicEventsForUser"]
+>;
+
+export type Events = Awaited<GetEventsResponse>["data"];
+
+export type Event = Events[number]
