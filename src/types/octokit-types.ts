@@ -13,3 +13,7 @@ export type GetEventsResponse = ReturnType<
 export type Events = Awaited<GetEventsResponse>["data"];
 
 export type Event = Events[number];
+export type RepoListResponse = ReturnType<
+  Octokit["rest"]["repos"]["listForUser"]
+>;
+export type RepoList = Awaited<RepoListResponse>["data"];
