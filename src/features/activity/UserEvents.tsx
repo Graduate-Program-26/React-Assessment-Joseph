@@ -5,6 +5,7 @@ import EventItem from "./EventItem";
 
 import { getPublicUserEvents } from "@/services/github/events";
 import { Events } from "@/types/octokit-types";
+import { formatDistanceToNow } from "date-fns";
 
 interface props {
   username: string;
@@ -27,9 +28,11 @@ export default function UserEvents(props: props) {
     <>
       <h3 className="font-semibold">Recent Activity</h3>
       <div className="border p-4 h-[50dvh] md:h-1/3 overflow-y-auto rounded-2xl">
-        <Accordion className="" variant="splitted">
+        <Accordion variant="splitted">
           {data.map((event) => {
-            const date = new Date(event.created_at!).toLocaleString();
+            const date = formatDistanceToNow(new Date(event.created_at!), {
+              addSuffix: true,
+            });
 
             return (
               <AccordionItem key={event.id} title={<EventItem event={event} />}>
