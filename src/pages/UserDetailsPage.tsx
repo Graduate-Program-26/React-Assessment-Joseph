@@ -7,6 +7,7 @@ import UserEvents from "../features/activity/UserEvents";
 
 import { getUser } from "@/services/github/users";
 import { GithubUser } from "@/types/octokit-types";
+import ListUserRepos from "@/features/repos/ListUserRepos";
 
 export default function UserDetailsPage() {
   const params = useParams();
@@ -27,17 +28,34 @@ export default function UserDetailsPage() {
           <CardBody>
             <Image
               alt={user.login}
-              className="rounded-full"
+              className="rounded-2xl"
               src={user.avatar_url}
             />
             <h2 className="mt-2 text-2xl font-bold">{user.name}</h2>
             <p className="">{user.login}</p>
             <p className="mt-2 line-clamp-2 ">{user.bio}</p>
+            <p className="">{user.location}</p>
+            <p className="">{`Followers: ${user.followers}  Following: ${user.following}`}</p>
+            {user.blog ? (
+              <a
+                href={`https://${user.blog}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                website: {user.blog}
+              </a>
+            ) : (
+              ""
+            )}
           </CardBody>
         </Card>
         <div className="col-span-2 flex flex-col gap-4 overflow-scroll">
           <UserEvents username={username} />
-          <GitHubCalendar username={user.login} />
+          <ListUserRepos username={username} />
+          <div>
+            <h3 className="font-semibold mb-2">Contributions</h3>
+            <GitHubCalendar username={user.login} />
+          </div>
         </div>
       </div>
     );
