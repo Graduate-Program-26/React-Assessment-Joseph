@@ -3,8 +3,11 @@ import { devtools } from "zustand/middleware";
 
 type appStore = {
   searchQuery: string;
+  isAuthenticated: boolean;
+  isAuthLoading: boolean;
 
   setSearchQuery: (searchQuery: string) => void;
+  setAuthenticated: (value: boolean) => void;
 };
 
 const storeCreator: StateCreator<
@@ -13,6 +16,8 @@ const storeCreator: StateCreator<
   []
 > = (set) => ({
   searchQuery: "",
+  isAuthenticated: false,
+  isAuthLoading: true,
   setSearchQuery: (Query) => {
     set(
       () => ({
@@ -20,6 +25,13 @@ const storeCreator: StateCreator<
       }),
       false,
       "setSearchQuery",
+    );
+  },
+  setAuthenticated: (value) => {
+    set(
+      () => ({ isAuthenticated: value, isAuthLoading: false }),
+      false,
+      "setAuthenticated",
     );
   },
 });
