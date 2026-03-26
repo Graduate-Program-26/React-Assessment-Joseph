@@ -9,14 +9,19 @@ export const siteConfig = {
       label: "Home",
       href: "/",
     },
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
   ],
   navMenuItems: [
     {
       label: "Home",
       href: "/",
     },
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
   ],
-  links: {
-    github: "https://github.com/heroui-inc/heroui",
-  },
 };
