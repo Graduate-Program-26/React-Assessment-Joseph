@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { useAppStore } from "@/store/store";
 import { Card, CardBody, CardFooter, CardHeader, Spinner } from "@heroui/react";
 
+import { useAppStore } from "@/store/store";
 import { LoginButton } from "@/components/LoginButton";
 
 export default function ProtectedRoute() {

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+
 import { useAppStore } from "@/store/store";
 import { GithubUser } from "@/types/octokit-types";
-import { useLocation } from "react-router-dom";
 
 interface authResponse {
   authenticated: boolean;

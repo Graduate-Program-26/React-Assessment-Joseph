@@ -1,5 +1,6 @@
-import { useAppStore } from "@/store/store";
 import { Button } from "@heroui/button";
+
+import { useAppStore } from "@/store/store";
 
 export default function LogoutButton() {
   const logout = useAppStore((store) => store.logout);

@@ -5,7 +5,6 @@ export default async function handler(
   response: VercelResponse,
 ) {
   const { code, state } = request.query;
-
   let redirectTo = "/";
 
   try {
@@ -35,7 +34,8 @@ export default async function handler(
 
     if (state) {
       try {
-        const parsed = JSON.parse(decodeURIComponent(state as string));
+        const rawState = Array.isArray(state) ? state[0] : state;
+        const parsed = JSON.parse(decodeURIComponent(rawState as string));
 
         redirectTo = parsed.redirecTo || "/";
         if (!redirectTo.startsWith("/")) {

@@ -10,15 +10,6 @@ import {
 } from "@heroui/navbar";
 import { link as linkStyles } from "@heroui/theme";
 import clsx from "clsx";
-
-import { title } from "./primitives";
-
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon } from "@/components/icons";
-import { LoginButton } from "./LoginButton";
-import { useAppStore } from "@/store/store";
-import UserIcon from "./UserIcon";
 import { Spinner } from "@heroui/spinner";
 import {
   Dropdown,
@@ -26,9 +17,16 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@heroui/dropdown";
+
+import { title } from "./primitives";
+import { LoginButton } from "./LoginButton";
+import UserIcon from "./UserIcon";
 import LogoutButton from "./LogoutButton";
-import { Card, CardBody } from "@heroui/card";
-import { Button } from "@heroui/button";
+
+import { siteConfig } from "@/config/site";
+import { ThemeSwitch } from "@/components/theme-switch";
+import { GithubIcon } from "@/components/icons";
+import { useAppStore } from "@/store/store";
 
 export const Navbar = () => {
   const isAuthenticated = useAppStore((store) => store.isAuthenticated);
