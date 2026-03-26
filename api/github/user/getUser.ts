@@ -1,12 +1,7 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-<<<<<<< Updated upstream
-import { createOctokit } from "../../../lib/octokit-client.ts";
-import { getTokenFromRequest } from "../../../lib/get-github-token.ts";
-=======
 import { createOctokit } from "../../../lib/octokit-client.js";
 import { getTokenFromRequest } from "../../../lib/get-github-token.js";
->>>>>>> Stashed changes
 
 export default async function handler(
   request: VercelRequest,
