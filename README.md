@@ -10,6 +10,9 @@ This application allows you to search and view any public github user and also v
 - [Tailwind CSS](https://tailwindcss.com)
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org)
+- [githubapi](https://docs.github.com/en/rest)
+- [octokit](https://octokit.github.io/rest.js/v22/)
+- [vercel](https://vercel.com/docs/functions)
 
 ## How to Use
 
@@ -21,7 +24,6 @@ git clone https://github.com/Graduate-Program-26/React-Assessment-Joseph/
 
 ### Install dependencies
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
 ```bash
 npm install
@@ -32,3 +34,18 @@ npm install
 ```bash
 vercel dev
 ```
+### Snapshots
+
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.40.50.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.04.png>)
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.49.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.14.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.09.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.43.11.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.40.29.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.00.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.09.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.17.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.52.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.43.17.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.57.png>) 
