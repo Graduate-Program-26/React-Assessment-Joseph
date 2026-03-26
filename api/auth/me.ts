@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-import { getTokenFromRequest } from "../../lib/get-github-token";
+import { getTokenFromRequest } from "../../lib/get-github-token.ts";
 import { createOctokit } from "../../lib/octokit-client.ts";
 
 export default async function handler(
