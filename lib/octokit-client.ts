@@ -1,8 +1,7 @@
 import { Octokit } from "@octokit/rest";
 
-export const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-  paginate: true,
-});
-
-export default octokit;
+export function createOctokit(token?: string) {
+  return new Octokit({
+    auth: token || process.env.GITHUB_TOKEN,
+  });
+}

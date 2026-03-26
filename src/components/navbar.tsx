@@ -16,8 +16,24 @@ import { title } from "./primitives";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon } from "@/components/icons";
+import { LoginButton } from "./LoginButton";
+import { useAppStore } from "@/store/store";
+import UserIcon from "./UserIcon";
+import { Spinner } from "@heroui/spinner";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@heroui/dropdown";
+import LogoutButton from "./LogoutButton";
+import { Card, CardBody } from "@heroui/card";
+import { Button } from "@heroui/button";
 
 export const Navbar = () => {
+  const isAuthenticated = useAppStore((store) => store.isAuthenticated);
+  const isAuthLoading = useAppStore((store) => store.isAuthLoading);
+
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -31,7 +47,7 @@ export const Navbar = () => {
             <p className={title({ color: "violet", size: "xs" })}>GitSearch</p>
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+        <div className="hidden sm:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <Link
@@ -54,38 +70,57 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          {isAuthLoading ? (
+            <Spinner size="sm" />
+          ) : isAuthenticated ? (
+            <Dropdown>
+              <DropdownTrigger>
+                <button>
+                  <UserIcon />
+                </button>
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem key="logout">
+                  <LogoutButton />
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : (
+            <LoginButton />
+          )}
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
+        <div className=" w-fit p-2 rounded-full">
+          {isAuthLoading ? (
+            <Spinner size="sm" />
+          ) : isAuthenticated ? (
+            <UserIcon />
+          ) : (
+            <LoginButton />
+          )}
+        </div>
+        <div className="mx-4 mt-2 h-full flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
+              <Link color="primary" href={item.href} size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>
           ))}
         </div>
+        {isAuthenticated ? (
+          <NavbarMenuItem className="justify-self-end mb-10">
+            <LogoutButton />
+          </NavbarMenuItem>
+        ) : null}
       </NavbarMenu>
     </HeroUINavbar>
   );
