@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import { Navbar } from "@/components/navbar";
-import AppBreadcrumbs from "@/components/appBreadcrumbs";
+import AppBreadcrumbs from "@/components/AppBreadcrumbs";
 
 export default function DefaultLayout() {
   return (
