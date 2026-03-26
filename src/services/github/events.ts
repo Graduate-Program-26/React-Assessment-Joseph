@@ -4,6 +4,9 @@ export async function getPublicUserEvents(username: string) {
   try {
     const response = await fetch(url);
 
+    if (response.status === 401) {
+      window.location.href = "/api/auth/login";
+    }
     if (!response.ok) {
       const errorData = await response.json();
 

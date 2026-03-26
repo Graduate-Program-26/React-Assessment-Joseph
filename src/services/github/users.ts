@@ -4,6 +4,9 @@ export async function searchUsers(query = "", page_param = 1, per_page = 10) {
   try {
     const response = await fetch(url);
 
+    if (response.status === 401) {
+      window.location.href = "/api/auth/login";
+    }
     if (!response.ok) {
       const errorData = await response.json();
 
@@ -22,6 +25,10 @@ export async function getUser(username: string) {
 
   try {
     const response = await fetch(url);
+
+    if (response.status === 401) {
+      window.location.href = "/api/auth/login";
+    }
 
     if (!response.ok) {
       const errorData = await response.json();
