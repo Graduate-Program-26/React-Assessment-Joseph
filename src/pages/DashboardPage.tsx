@@ -1,7 +1,4 @@
 import { useState } from "react";
-import UserEvents from "@/features/activity/UserEvents";
-import ListUserRepos from "@/features/repos/ListUserRepos";
-import { useAppStore } from "@/store/store";
 import {
   Card,
   CardBody,
@@ -13,6 +10,10 @@ import {
 } from "@heroui/react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "@heroui/use-theme";
+
+import UserEvents from "@/features/activity/UserEvents";
+import ListUserRepos from "@/features/repos/ListUserRepos";
+import { useAppStore } from "@/store/store";
 
 export default function Dashboard() {
   const user = useAppStore((store) => store.loggedInUser);
@@ -105,17 +106,17 @@ export default function Dashboard() {
 
         <main className="flex-1 min-w-0 h-[95dvh] overflow-clip">
           <div className="flex flex-col gap-8">
-            <Card shadow="sm" className="bg-content1/50 backdrop-blur-md ">
+            <Card className="bg-content1/50 backdrop-blur-md " shadow="sm">
               <CardBody className="p-6">
                 <h3 className="text-sm font-medium mb-4 text-default-500">
                   Contributions
                 </h3>
                 <div className="overflow-x-auto py-2">
                   <GitHubCalendar
-                    username={user.login}
-                    fontSize={12}
-                    blockSize={12}
                     blockMargin={4}
+                    blockSize={12}
+                    fontSize={12}
+                    username={user.login}
                   />
                 </div>
               </CardBody>
@@ -148,20 +149,20 @@ export default function Dashboard() {
                   <div className="grid grid-cols-2 gap-2">
                     <Image
                       alt="stats"
-                      width="100%"
                       src={`http://github-profile-summary-cards.vercel.app/api/cards/stats?username=${user.login}&theme=${statsTheme}`}
+                      width="100%"
                     />
                     <Image
                       alt="top languages"
-                      width="100%"
                       src={`http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${user.login}&theme=${statsTheme}`}
+                      width="100%"
                     />
                     <div className="col-span-2">
                       <Image
                         alt="GitHub Streak"
-                        width="100%"
                         height="25%"
                         src={`https://streak-stats.demolab.com?user=${user.login}&theme=${statsTheme}&hide_border=true`}
+                        width="100%"
                       />
                     </div>
                   </div>

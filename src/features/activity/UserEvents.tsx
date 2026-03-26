@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Spinner, Accordion, AccordionItem } from "@heroui/react";
+import { formatDistanceToNow } from "date-fns";
 
 import EventItem from "./EventItem";
 
 import { getPublicUserEvents } from "@/services/github/events";
 import { Events } from "@/types/octokit-types";
-import { formatDistanceToNow } from "date-fns";
 
 interface props {
   username: string;

@@ -8,7 +8,7 @@ export default function DefaultLayout() {
     <div className="relative flex flex-col h-screen">
       <Navbar />
       <main className="container mx-auto max-w-7xl px-6 flex-grow pt-4">
-      <AppBreadcrumbs />
+        <AppBreadcrumbs />
         <Outlet />
       </main>
     </div>

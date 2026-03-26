@@ -1,8 +1,10 @@
-import { getUserRepos } from "@/services/github/repos";
 import type { RepoList } from "@/types/octokit-types";
+
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
+
+import { getUserRepos } from "@/services/github/repos";
 
 interface props {
   username: string;

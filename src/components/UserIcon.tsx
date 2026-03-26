@@ -1,5 +1,6 @@
+import { User } from "@heroui/react";
+
 import { useAppStore } from "@/store/store";
-import { User, Link } from "@heroui/react";
 
 export default function UserIcon() {
   const user = useAppStore((store) => store.loggedInUser);

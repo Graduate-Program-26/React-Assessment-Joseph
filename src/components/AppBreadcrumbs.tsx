@@ -11,9 +11,9 @@ export default function AppBreadcrumbs() {
 
   return (
     <Breadcrumbs
-      variant="solid"
-      underline="active"
       className="bg-linear-to-r from-violet-600 via-cyan-400 to-pink-400 w-fit rounded-xl mb-4 p-0.5"
+      underline="active"
+      variant="solid"
     >
       <BreadcrumbItem>
         <Link to="/">Home</Link>

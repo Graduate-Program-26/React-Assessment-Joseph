@@ -3,11 +3,11 @@ import type { GithubUser } from "@/types/octokit-types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Spinner } from "@heroui/react";
 import { useSearchParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 import UserCard from "./UserCard";
 
 import { searchUsers } from "@/services/github/users";
-import { useEffect, useRef } from "react";
 
 export default function SearchResultsList() {
   const [searchParams] = useSearchParams();

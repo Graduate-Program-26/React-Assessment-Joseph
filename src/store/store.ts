@@ -1,6 +1,7 @@
-import { GithubUser } from "@/types/octokit-types";
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
+
+import { GithubUser } from "@/types/octokit-types";
 
 type appStore = {
   searchQuery: string;
