@@ -5,14 +5,14 @@ export default async function handler(
   response: VercelResponse,
 ) {
   const client_id = process.env.GITHUB_CLIENT_ID;
-  const redirectTo = request.query;
-  const state= encodeURIComponent(
+  const { redirectTo } = request.query;
+  const state = encodeURIComponent(
     JSON.stringify({
-      redirectTo: redirectTo || "/"
-    })
-  )
+      redirectTo: redirectTo || "/",
+    }),
+  );
 
-  const redirect = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=read:user&state${state}`;
+  const redirect = `https://github.com/login/oauth/authorize?client_id=${client_id}&state=${state}&scope=read:user`;
 
   response.redirect(redirect);
 }
