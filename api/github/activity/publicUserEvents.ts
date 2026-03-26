@@ -1,11 +1,14 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-import { octokit } from "../../../lib/octokit-client";
+import { createOctokit } from "../../../lib/octokit-client";
+import { getTokenFromRequest } from "../../../lib/get-github-token";
 
 export default async function handler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
+  const githubToken = getTokenFromRequest(request);
+  const octokit = createOctokit(githubToken);
   const { username } = request.query;
 
   if (!username) {
