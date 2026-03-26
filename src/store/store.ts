@@ -11,6 +11,7 @@ type appStore = {
   setSearchQuery: (searchQuery: string) => void;
   setAuthenticated: (value: boolean) => void;
   setLoggedInUser: (user: GithubUser | null) => void;
+  setIsAuthLoading: (value: boolean) => void;
   logout: () => void;
 };
 
@@ -41,6 +42,9 @@ const storeCreator: StateCreator<
   },
   setLoggedInUser: (user) => {
     set(() => ({ loggedInUser: user }), false, "setLoggedInUser");
+  },
+  setIsAuthLoading: (value) => {
+    set(() => ({ isAuthLoading: value }), false, "setIsAuthLoading");
   },
   logout: () => {
     set(
