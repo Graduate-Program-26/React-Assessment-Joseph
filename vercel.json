@@ -2,5 +2,11 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "devCommand": null
+  "devCommand": null,
+  "rewrites": [
+    {
+      "source": "/((?!api).*)",
+      "destination": "/"
+    }
+  ]
 }
