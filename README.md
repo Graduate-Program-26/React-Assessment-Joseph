@@ -1,8 +1,7 @@
-# Vite & HeroUI Template
+# Gitsearch
+This application allows you to search and view any public github user and also view your own dashboard
 
-This is a template for creating applications using Vite and HeroUI (v2).
-
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/vite-template)
+[Try it on live deployment: ](https://gitsearch-sigma.vercel.app/)
 
 ## Technologies Used
 
@@ -11,19 +10,20 @@ This is a template for creating applications using Vite and HeroUI (v2).
 - [Tailwind CSS](https://tailwindcss.com)
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+- [githubapi](https://docs.github.com/en/rest)
+- [octokit](https://octokit.github.io/rest.js/v22/)
+- [vercel](https://vercel.com/docs/functions)
 
 ## How to Use
 
 To clone the project, run the following command:
 
 ```bash
-git clone https://github.com/heroui-inc/vite-template.git
+git clone https://github.com/Graduate-Program-26/React-Assessment-Joseph/
 ```
 
 ### Install dependencies
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
 ```bash
 npm install
@@ -32,19 +32,20 @@ npm install
 ### Run the development server
 
 ```bash
-npm run dev
+vercel dev
 ```
+### Snapshots
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/vite-template/blob/main/LICENSE).
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.40.50.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.04.png>)
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.49.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.14.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.42.09.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.43.11.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.40.29.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.00.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.09.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.17.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.52.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.43.17.png>) 
+![alt text](<./screenshots/Screenshot 2026-03-26 at 17.41.57.png>) 
