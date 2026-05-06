@@ -37,7 +37,7 @@ export default async function handler(
         const rawState = Array.isArray(state) ? state[0] : state;
         const parsed = JSON.parse(decodeURIComponent(rawState as string));
 
-        redirectTo = parsed.redirecTo || "/";
+        redirectTo = parsed.redirectTo || "/";
         if (!redirectTo.startsWith("/")) {
           redirectTo = "/";
         }

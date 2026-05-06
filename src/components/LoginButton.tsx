@@ -9,7 +9,7 @@ export function LoginButton() {
 
   function handleLogin(pathname: string) {
     setIsAuthLoading(false);
-    window.location.href = `api/auth/login?redirectTo=${encodeURIComponent(pathname)}`;
+    window.location.href = `/api/auth/login?redirectTo=${encodeURIComponent(pathname)}`;
   }
 
   return (
