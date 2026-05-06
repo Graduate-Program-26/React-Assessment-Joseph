@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
 import UserCard from "./UserCard";
+import CenteredSpinner from "@/components/CenteredSpinner";
 
 import { searchUsers } from "@/services/github/users";
 
@@ -14,7 +15,7 @@ export default function SearchResultsList() {
   const query = searchParams.get("query")?.toString();
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  const usersPerPage = 10;
+  const usersPerPage = 12;
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: ["searchQuery", query],
@@ -54,35 +55,37 @@ export default function SearchResultsList() {
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
-  if (isLoading)
-    return (
-      <>
-        <Spinner />
-      </>
-    );
-  if (!data) return;
+  if (isLoading) return <CenteredSpinner fullScreen />;
+  
+  if (!data) return null;
 
   const users = data.pages.flatMap((page) => page.items);
   const totalCount = data.pages[0].total_count;
 
   return (
-    <section className="flex  flex-col gap-2">
-      <p>Found: {totalCount} users</p>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <section className="flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <p className="text-default-500 text-sm">
+          Found <span className="text-foreground font-semibold">{totalCount}</span> users
+        </p>
+      </div>
+      
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
         {users.map((user: GithubUser) => (
-          <li key={user.id} className="col-span-1">
+          <li key={user.id}>
             <UserCard user={user} />
           </li>
         ))}
       </ul>
-      {hasNextPage ? (
+
+      {hasNextPage && (
         <div
           ref={sentinelRef}
-          className="h-10 flex justify-center items-center mt-4"
+          className="h-20 flex justify-center items-center mt-8"
         >
-          {isFetchingNextPage && <Spinner />}
+          {isFetchingNextPage && <Spinner size="lg" color="primary" />}
         </div>
-      ) : null}
+      )}
     </section>
   );
 }
